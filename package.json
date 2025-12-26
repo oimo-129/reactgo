@@ -20,6 +20,7 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@babel/standalone": "^7.28.5",
     "acorn": "^8.15.0",
     "acorn-import-phases": "^1.0.4",
     "ajv": "^8.17.1",
@@ -93,6 +94,8 @@
     "picocolors": "^1.1.1",
     "pkg-dir": "^4.2.0",
     "randombytes": "^2.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rechoir": "^0.8.0",
     "regenerate": "^1.4.2",
     "regenerate-unicode-properties": "^10.2.2",

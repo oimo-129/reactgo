@@ -1,0 +1,43 @@
+<!-- 动态列表的练习 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>动态列表</title>
+
+        <!-- ✅ 使用 defer 属性，脚本会在DOM加载后执行 -->
+        <script defer src="../js/umd/react.development.js"></script>
+        <script defer src="../js/umd/react-dom.development.js"></script>
+        <script defer src="../js/babel.min.js"></script>
+        <style>
+          .title {
+            color: blue;
+            font-size: 24px;
+            margin-bottom: 10px;
+          }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+      const myarr = ["朱德成", "29", "男", ];
+      const VDOM = (
+          <div>
+          <h2 className="title">动态列表demo</h2>  
+          <ul>
+            {myarr.map((data, index) => (
+              <li key={index}>
+                {data}
+              </li>
+            ))}
+            
+          </ul>
+        </div>
+      );
+      //渲染虚拟dom到页面
+      ReactDOM.render(VDOM, document.getElementById("root"));
+    </script>
+    </body>
+</html>
