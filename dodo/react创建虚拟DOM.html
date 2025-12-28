@@ -1,0 +1,92 @@
+<!-- 动态列表的练习 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>动态列表</title>
+
+        <!-- ✅ 使用 defer 属性，脚本会在DOM加载后执行 -->
+        <script defer src="../js/umd/react.development.js"></script>
+        <script defer src="../js/umd/react-dom.development.js"></script>
+        <script defer src="../js/babel.min.js"></script>
+        <style>
+          .title {
+            color: blue;
+            font-size: 24px;
+            margin-bottom: 1 0px;
+          }
+        </style>
+    </head>
+    <body>
+      <div>
+
+         <div id="root">
+          
+        </div>
+        <div id="classcomp"></div>
+
+      </div>
+       
+        <script type="text/babel">
+      const myarr = ["朱德成", "29", "男", ];
+      //1.JSX创建虚拟DOM
+      const VDOM = (
+          <div>
+          <h2 className="title">动态列表demo</h2>  
+          <ul>
+            {myarr.map((data, index) => (
+              <li key={index}>
+                {data}
+              </li>
+            ))}
+            
+          </ul>
+        </div>
+      );
+      //渲染虚拟dom到页面
+      ReactDOM.render(VDOM, document.getElementById("root"));
+
+
+      //2.函数式组件
+      /*
+      React 渲染虚拟dom,React找到函数式编程组件，然后解析，并执行
+      解析组件标签，找到对应的函数，执行函数，获取返回值（虚拟DOM），
+      最后把虚拟DOM渲染到页面上
+      */
+      function Demo(){
+        
+        return <div>函数式组件</div>
+      }
+      //语法结构，必须要写组件标签
+      ReactDOM.render(<Demo />, document.getElementById("root"));
+
+      //3.类组件
+      class Mycomp extends React.Component{
+        render(){
+          return (
+            <div>
+              <h2 className="title">类组件列表</h2>
+              <ul>
+                {myarr.map((data, index) => (
+                  <li key={index}>{data}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        }
+         
+      }
+    //渲染组件到页面
+    /*
+      React 渲染虚拟dom,React找到类编程组件，然后解析，并执行
+      解析组件标签，找到对应的类，创建实例，
+      并通过实例调用原型链上的render方法，//这个是重点
+      获取返回值（虚拟DOM），
+      最后把虚拟DOM渲染到页面上
+      Mycomp 组件实例对象
+      */
+    ReactDOM.render(<Mycomp />, document.getElementById("classcomp"));
+    </script>
+    </body>
+</html>
