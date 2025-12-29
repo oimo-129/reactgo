@@ -1,0 +1,50 @@
+<!-- 动态列表的练习 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态列表</title>
+
+    <!-- ✅ 使用 defer 属性，脚本会在DOM加载后执行 -->
+    <script defer src="../js/umd/react.development.js"></script>
+    <script defer src="../js/umd/react-dom.development.js"></script>
+    <script defer src="../js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // 定义类组件
+      class Mycomp extends React.Component {
+        //初始化状态
+        state = {
+          season: "我的天",
+          isHot: false,
+        };
+        //自定义方法(赋值语句+箭头函数)
+        changeSession = () => {
+          this.setState({
+            season: this.state.season === "我的天" ? "我的地" : "我的天",
+          });
+        };
+        //渲染组件
+        render() {
+          //这里可以解构赋,对象的解构赋值
+          const { season } = this.state;
+          return (
+            <div>
+              现在是
+              <span style={{ cursor: "pointer" }} onClick={this.changeSession}>
+                {season}
+              </span>
+            </div>
+          );
+        }
+      }
+
+      // 渲染到页面（React 17及以下版本使用render方法）
+      ReactDOM.render(<Mycomp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
