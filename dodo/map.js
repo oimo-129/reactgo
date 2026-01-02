@@ -9,3 +9,11 @@ names = users.map(
         return user.name;
     }
 )
+//数组上面的方法
+//这里有展开运算符
+function sum(...nums){
+  return nums.reduce((preValue,curValue)=>{
+    return preValue+curValue;
+  })
+}
+sum(1,2,3,4,5);//15

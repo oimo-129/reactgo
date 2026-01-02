@@ -17,7 +17,7 @@ type Props = {}
 
 const Navbar = (props: Props) => {
   return (
-    <div>导航栏</div>
+    <div className='w-60 h-screen  bg-slate-300 flex flex-col items-center gap-4 fixed'>导航栏</div>
   )
 }
 
